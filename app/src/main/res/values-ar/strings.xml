@@ -1,0 +1,112 @@
+<resources>
+    <string name="str_empty_data">لا توجد بيانات المضافة حتى الان.</string>
+    <string name="str_attended"> الحاضر </string>
+    <string name="str_absent"> غائب </string>
+
+    <string name="str_lecture_name"> الاسم </string>
+    <string name="str_lecture_name_hint"> اسم النوع </string>
+    <string name="str_lecture_name_alert"> اسم غير صالح </string>
+    <string name="str_lecture_date"> التاريخ %s </string>
+
+    <string name="str_course_summary_title">الملخص</string>
+    <string name="str_course_viewer_title">عرض كورس</string>
+    <string name="str_create_new_user">مستخدم جديد</string>
+    <string name="str_create_new_course">كورس جديد</string>
+    <string name="str_create_new_lecture">محاضرة جديدة</string>
+    <string name="str_take_attendance">اخذ الحضور</string>
+    <string name="str_students_counter">الطلاب %d</string>
+    <string name="str_lectures_counter">محاضرات %d</string>
+    <string name="str_students">الطلاب</string>
+    <string name="str_lectures">المحاضرات</string>
+
+    <string name="str_password_hint">ادخل كلمة المرور</string>
+    <string name="str_delete">حــــذف</string>
+
+    <string name="str_loading"> جارٍ التحميل ... </string>
+    <string name="str_search_hint">بحث</string>
+    <string name="str_home">الرئيسية</string>
+    <string name="str_users"> المستخدمين </string>
+    <string name="str_courses"> الكورسات </string>
+    <string name="str_about">عن التطتبيق</string>
+    <string name="str_more"> المزيد </string>
+
+    <string name="str_upload_successfully"> تم التحميل بنجاح </string>
+
+    <string name="str_save"> حفظ </string>
+
+    <string name="str_header_welcome">أهلا بك : %s</string>
+    <string name="str_header_profile"> ملفي الشخصي </string>
+    <string name="str_change_language"> <u> تغيير اللغة إلى الإنجليزية </u> </string>
+    <string name="str_header_settings"> الإعدادات </string>
+    <string name="str_change_image_profile"> <u> تغيير الصورة </u> </string>
+    <string name="str_invalid_username_or_password"> اسم المستخدم أو كلمة المرور غير صالحة: </string>
+    <string name="str_login_successful"> تم تسجيل الدخول بنجاح </string>
+
+    <string name="str_salary_type_hour">ساعة</string>
+    <string name="str_salary_type_day">يوم</string>
+    <string name="str_salary_type_month">شهر</string>
+
+    <string name="str_gender_type_male">ذكر</string>
+    <string name="str_gender_type_female">انثى</string>
+
+    <string name="str_grade"> الصف </string>
+    <string name="str_grade_hint"> حدد الصف </string>
+    <string name="str_grade_alert"> الصف غير صالح </string>
+    <string name="str_username_invalid"> اسم المستخدم غير صالح </string>
+    <string name="str_password"> كلمة المرور </string>
+    <string name="str_default_password">كلمة المرور الافتراضية 123456</string>
+    <string name="str_password_length_invalid"> طول كلمة المرور غير صالح ، يجب ألا تقل كلمة المرور عن 6 أرقام </string>
+    <string name="str_password_confirm_hint"> تأكيد كلمة المرور </string>
+    <string name="str_password_confirm_invalid"> تأكيد كلمة المرور غير صالحة </string>
+    <string name="str_full_name_hint"> الاسم الكامل </string>
+    <string name="str_full_name_invalid"> الاسم الكامل غير صالح </string>
+    <string name="str_phone_hint"> الهاتف </string>
+    <string name="str_phone_invalid"> الهاتف غير صالح </string>
+    <string name="str_address_hint"> العنوان </string>
+    <string name="str_address_invalid"> العنوان غير صالح </string>
+    <string name="str_signup_fail"> فشل التسجيل:(%s) </string>
+
+    <string name="str_forget_password"> <u> هل نسيت كلمة المرور؟ </u> </string>
+    <string name="str_logout">تسجيل الخروج</string>
+    <string name="str_edit">تعديل</string>
+
+    <string name="str_about_content">المحتوى:</string>
+    <string name="str_about_conditions">الشروط:</string>
+    <string name="str_about_objectives">الأهداف:</string>
+
+    <string name="str_user_type_admin">مدير</string>
+    <string name="str_user_type_student">طالب</string>
+    <string name="str_user_type_teacher">مدرس</string>
+
+    <string name="str_user_type_admin_title"> مسؤول جديد / تعديل </string>
+    <string name="str_user_type_student_title"> طالب جديد / تعديل </string>
+    <string name="str_user_type_lecturer_title"> مدرس جديد / تعديل </string>
+
+    <string name="str_course_name"> الاسم </string>
+    <string name="str_degree_per_lecture_summary">%s للمحاضرة</string>
+    <string name="str_course_name_hint"> اسم النوع </string>
+    <string name="str_course_name_alert"> اسم غير صالح </string>
+    <string name="str_course_grade"> الصف </string>
+    <string name="str_course_grade_hint"> حدد الصف </string>
+    <string name="str_course_grade_alert"> الصف غير صالح </string>
+    <string name="str_course_lecturer"> المدرس </string>
+    <string name="str_course_lecturer_hint"> حدد المدرس </string>
+    <string name="str_course_lecturer_alert"> المدرس غير صالح </string>
+    <string name="str_course_students"> الطلاب </string>
+    <string name="str_course_students_alert"> الطلاب غير الصالحين </string>
+    <string name="str_course_degree_per_lecture">درجة كل محضره</string>
+    <string name="str_course_degree_per_lecture_alert">خطاء فى درجة كل محضره</string>
+
+    <string name="str_message_added_successfully"> اكتملت الإضافة أو التحديث بنجاح </string>
+    <string name="str_message_delete_successfully">اكتمل الحذف بنجاح</string>
+    <string-array name="grades">
+        <item> الصف 1 </item>
+        <item> الصف 2 </item>
+        <item> الصف 3 </item>
+        <item> الصف 4 </item>
+    </string-array>
+
+    <string name="str_students_header">الطلاب</string>
+    <string name="str_degrees_header">الدرجات</string>
+    <string name="str_total">الاجمالى</string>
+</resources>
