@@ -1,8 +1,13 @@
 package com.student.attendance.app.activities;
 
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.location.Location;
+import android.location.LocationManager;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -15,8 +20,6 @@ import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import com.bumptech.glide.Glide;
-import com.example.easywaylocation.EasyWayLocation;
-import com.example.easywaylocation.Listener;
 import com.google.android.material.tabs.TabLayout;
 import com.student.attendance.app.R;
 import com.student.attendance.app.fragments.ProgressDialogFragment;
@@ -24,13 +27,14 @@ import com.student.attendance.app.fragments.users.LecturesFragment;
 import com.student.attendance.app.fragments.users.StudentsFragment;
 import com.student.attendance.app.models.Course;
 import com.student.attendance.app.utils.LocaleHelper;
+import com.student.attendance.app.utils.LocationService;
 import com.student.attendance.app.utils.UIHelper;
 import com.student.attendance.app.utils.ValueCallback;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class CourseDetailsActivity extends BaseActivity implements Listener {
+public class CourseDetailsActivity extends BaseActivity implements LocationService.LocationServiceCallback {
     private Toolbar toolbar;
     private TextView name;
     private ImageView image;
@@ -38,9 +42,8 @@ public class CourseDetailsActivity extends BaseActivity implements Listener {
     private TextView lecturer;
     private TextView degreePerLecture;
     private ViewPager viewPager;
-    private TabLayout tabLayout;
 
-    private EasyWayLocation easyWayLocation;
+    private LocationService locationService;
     private Course course;
     private StringBuilder currentLocation;
 
@@ -50,13 +53,13 @@ public class CourseDetailsActivity extends BaseActivity implements Listener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_course_details);
 
-        easyWayLocation = new EasyWayLocation(this, false, false, this);
+        locationService = new LocationService();
+        locationService.init(this);
 
         toolbar = findViewById(R.id.toolbar);
         setupSupportedActionBar(toolbar);
         setActionBarTitle(getString(R.string.str_course_viewer_title));
 
-        tabLayout = findViewById(R.id.tab_layout);
         viewPager = findViewById(R.id.view_pager);
 
         image = findViewById(R.id.image);
@@ -73,31 +76,54 @@ public class CourseDetailsActivity extends BaseActivity implements Listener {
         adapter.addFragment(LecturesFragment.newInstance(course), getString(R.string.str_lectures));
         viewPager.setAdapter(adapter);
         bindCourse();
-
-        Toast.makeText(this, "Fetch Current Location Start", Toast.LENGTH_SHORT).show();
-        easyWayLocation.startLocation();
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        switch (requestCode) {
-            case EasyWayLocation.LOCATION_SETTING_REQUEST_CODE:
-                easyWayLocation.onActivityResult(resultCode);
-                break;
-        }
     }
 
     @Override
     protected void onResume() {
         super.onResume();
+        checkEnableGps();
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        easyWayLocation.endUpdates();
+        // locationService.endUpdates();
+    }
 
+    private void checkEnableGps() {
+        LocationManager lm = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
+        boolean gpsEnabled = false;
+        boolean networkEnabled = false;
+
+        try {
+            gpsEnabled = lm.isProviderEnabled(LocationManager.GPS_PROVIDER);
+        } catch(Exception ex) {}
+
+        try {
+            networkEnabled = lm.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
+        } catch(Exception ex) {}
+
+        if(!gpsEnabled && !networkEnabled) {
+            // notify user
+            new AlertDialog.Builder(this)
+                    .setMessage(R.string.gps_network_not_enabled)
+                    .setPositiveButton(R.string.open_location_settings, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface paramDialogInterface, int paramInt) {
+                            startActivity(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS));
+                        }
+                    })
+                    .setNegativeButton(R.string.str_cancel, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            finish();
+                        }
+                    })
+                    .show();
+        } else {
+            Toast.makeText(this, "Fetch Current Location Start", Toast.LENGTH_SHORT).show();
+            locationService.getLocation(this, this);
+        }
     }
 
     protected void setupSupportedActionBar(Toolbar toolbar) {
@@ -138,18 +164,12 @@ public class CourseDetailsActivity extends BaseActivity implements Listener {
     }
 
     @Override
-    public void locationOn() {
-        Toast.makeText(this, "Location ON", Toast.LENGTH_SHORT).show();
-    }
-
-    @Override
-    public void currentLocation(Location location) {
+    public void onSuccess(Location location) {
         currentLocation = new StringBuilder();
         currentLocation.append(location.getLatitude());
         currentLocation.append(",");
         currentLocation.append(location.getLongitude());
         Toast.makeText(this, "Fetch Current Location Done", Toast.LENGTH_SHORT).show();
-        easyWayLocation.endUpdates();
 
         try {
             for (Fragment fragment : getSupportFragmentManager().getFragments()) {
@@ -162,8 +182,8 @@ public class CourseDetailsActivity extends BaseActivity implements Listener {
     }
 
     @Override
-    public void locationCancelled() {
-        Toast.makeText(this, "Location Cancelled", Toast.LENGTH_SHORT).show();
+    public void onError() {
+
     }
 
     class ViewPagerAdapter extends FragmentStatePagerAdapter {

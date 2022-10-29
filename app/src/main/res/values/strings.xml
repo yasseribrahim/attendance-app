@@ -2,6 +2,9 @@
     <string name="app_name" translatable="false">Attendance</string>
     <string name="str_loading">Loading...</string>
 
+    <string name="open_location_settings" translatable="false">Open Settings</string>
+    <string name="gps_network_not_enabled" translatable="false">GPS Network Not Enabled</string>
+    <string name="str_cancel" translatable="false">Cancel</string>
     <string name="str_empty_data">There are no data added yet.</string>
     <string name="str_attended">Present</string>
     <string name="str_absent">Absent</string>
