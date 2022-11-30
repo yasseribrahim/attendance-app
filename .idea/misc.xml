@@ -11,19 +11,24 @@
         <entry key="..\:/Projects/Android/attendance-app/app/src/main/res/layout/activity_course.xml" value="0.2884310618066561" />
         <entry key="..\:/Projects/Android/attendance-app/app/src/main/res/layout/activity_course_details.xml" value="0.20364583333333333" />
         <entry key="..\:/Projects/Android/attendance-app/app/src/main/res/layout/activity_course_summary.xml" value="0.25" />
+        <entry key="..\:/Projects/Android/attendance-app/app/src/main/res/layout/activity_forget_password.xml" value="0.1" />
         <entry key="..\:/Projects/Android/attendance-app/app/src/main/res/layout/activity_home_admin.xml" value="0.20364583333333333" />
         <entry key="..\:/Projects/Android/attendance-app/app/src/main/res/layout/activity_home_lecturer.xml" value="0.20364583333333333" />
         <entry key="..\:/Projects/Android/attendance-app/app/src/main/res/layout/activity_home_student.xml" value="0.20364583333333333" />
+        <entry key="..\:/Projects/Android/attendance-app/app/src/main/res/layout/activity_lecture.xml" value="0.1" />
         <entry key="..\:/Projects/Android/attendance-app/app/src/main/res/layout/activity_login.xml" value="0.33" />
         <entry key="..\:/Projects/Android/attendance-app/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Projects/Android/attendance-app/app/src/main/res/layout/activity_splash.xml" value="0.20416666666666666" />
+        <entry key="..\:/Projects/Android/attendance-app/app/src/main/res/layout/activity_user.xml" value="0.20364583333333333" />
         <entry key="..\:/Projects/Android/attendance-app/app/src/main/res/layout/content_main.xml" value="0.20364583333333333" />
         <entry key="..\:/Projects/Android/attendance-app/app/src/main/res/layout/fragment_about.xml" value="0.25" />
         <entry key="..\:/Projects/Android/attendance-app/app/src/main/res/layout/fragment_courses.xml" value="0.20364583333333333" />
         <entry key="..\:/Projects/Android/attendance-app/app/src/main/res/layout/fragment_lectures.xml" value="0.33" />
+        <entry key="..\:/Projects/Android/attendance-app/app/src/main/res/layout/fragment_more.xml" value="0.20364583333333333" />
         <entry key="..\:/Projects/Android/attendance-app/app/src/main/res/layout/fragment_users.xml" value="0.20364583333333333" />
         <entry key="..\:/Projects/Android/attendance-app/app/src/main/res/layout/item_course_summary.xml" value="0.20364583333333333" />
         <entry key="..\:/Projects/Android/attendance-app/app/src/main/res/layout/item_course_summary_header.xml" value="0.20364583333333333" />
+        <entry key="..\:/Projects/Android/attendance-app/app/src/main/res/layout/item_course_summary_header_student.xml" value="0.20364583333333333" />
         <entry key="..\:/Projects/Android/attendance-app/app/src/main/res/layout/item_course_summary_header_teacher.xml" value="0.20364583333333333" />
         <entry key="..\:/Projects/Android/attendance-app/app/src/main/res/layout/item_course_summary_student.xml" value="0.33" />
         <entry key="..\:/Projects/Android/attendance-app/app/src/main/res/layout/item_course_summary_student_header.xml" value="0.33" />

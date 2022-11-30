@@ -16,7 +16,7 @@
             android:layout_margin="5dp"
             android:layout_weight="2"
             android:gravity="start"
-            android:text="@string/str_lectures"
+            android:text="@string/str_students"
             android:textColor="@color/colorPrimary"
             android:textSize="13sp"
             android:textStyle="bold" />
@@ -27,7 +27,7 @@
             android:layout_margin="5dp"
             android:layout_weight="1"
             android:gravity="start"
-            android:text="@string/str_students_header"
+            android:text="@string/str_degrees_header"
             android:textColor="@color/colorPrimary"
             android:textSize="13sp"
             android:textStyle="bold" />

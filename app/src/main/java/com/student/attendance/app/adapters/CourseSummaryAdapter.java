@@ -58,11 +58,12 @@ public class CourseSummaryAdapter extends RecyclerView.Adapter<RecyclerView.View
             case ITEM_TYPE_DETAIL:
                 Summary summary = summaries.get(position);
                 DetailViewHolder holder = (DetailViewHolder) viewHolder;
-                holder.key.setText(summary.getLectureName());
                 if (forStudent) {
                     holder.value.setText(summary.getDegree() + "");
+                    holder.key.setText(summary.getLectureName());
                 } else {
-                    holder.value.setText(summary.getStudentNumber() + "");
+                    holder.value.setText(summary.getDegree() + "");
+                    holder.key.setText(summary.getStudentName());
                 }
                 break;
         }

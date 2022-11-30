@@ -19,7 +19,6 @@ import com.bumptech.glide.Glide;
 import com.google.android.material.navigation.NavigationView;
 import com.student.attendance.app.R;
 import com.student.attendance.app.fragments.AboutFragment;
-import com.student.attendance.app.fragments.HomeFragment;
 import com.student.attendance.app.fragments.MoreFragment;
 import com.student.attendance.app.fragments.users.admin.CoursesGradesFragment;
 import com.student.attendance.app.fragments.users.admin.UsersTypesFragment;
@@ -53,10 +52,6 @@ public class HomeAdminActivity extends AppCompatActivity {
                     @Override
                     public void run() {
                         switch (item.getItemId()) {
-                            case R.id.nav_home:
-                                showFragment(HomeFragment.newInstance(), R.id.container);
-                                toolbar.setTitle(R.string.str_home);
-                                break;
                             case R.id.nav_users:
                                 showFragment(UsersTypesFragment.newInstance(), R.id.container);
                                 toolbar.setTitle(R.string.str_users);
@@ -86,8 +81,8 @@ public class HomeAdminActivity extends AppCompatActivity {
             }
         });
 
-        navigationView.setCheckedItem(R.id.nav_home);
-        showFragment(HomeFragment.newInstance(), R.id.container);
+        navigationView.setCheckedItem(R.id.nav_users);
+        showFragment(UsersTypesFragment.newInstance(), R.id.container);
         toolbar.setTitle(R.string.str_home);
 
         CircleImageView profileImage = navigationView.getHeaderView(0).findViewById(R.id.profile_image);

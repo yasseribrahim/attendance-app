@@ -43,7 +43,6 @@
                     android:background="@null"
                     android:drawableStart="@drawable/ic_edit"
                     android:gravity="center"
-                    android:inputType="text"
                     android:text="@string/str_edit"
                     android:textColor="@color/colorPrimary"
                     android:textStyle="bold" />

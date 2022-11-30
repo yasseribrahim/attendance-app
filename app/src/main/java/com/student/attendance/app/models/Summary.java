@@ -6,17 +6,19 @@ public class Summary {
     private String lectureId;
     private String lectureName;
     private float degree;
-    private int studentNumber;
+    private int studentNumberLectures;
+    private String studentName;
 
-    public Summary(String lectureId, String lectureName) {
-        this(lectureId, lectureName, 0, 0);
+    public Summary(String lectureId, String lectureName, String studentName) {
+        this(lectureId, lectureName, 0, 0, studentName);
     }
 
-    public Summary(String lectureId, String lectureName, float degree, int studentNumber) {
+    public Summary(String lectureId, String lectureName, float degree, int studentNumberLectures, String studentName) {
         this.lectureId = lectureId;
         this.lectureName = lectureName;
         this.degree = degree;
-        this.studentNumber = studentNumber;
+        this.studentNumberLectures = studentNumberLectures;
+        this.studentName = studentName;
     }
 
     public String getLectureId() {
@@ -43,12 +45,20 @@ public class Summary {
         this.degree = degree;
     }
 
-    public int getStudentNumber() {
-        return studentNumber;
+    public int getStudentNumberLectures() {
+        return studentNumberLectures;
     }
 
-    public void setStudentNumber(int studentNumber) {
-        this.studentNumber = studentNumber;
+    public void setStudentNumberLectures(int studentNumberLectures) {
+        this.studentNumberLectures = studentNumberLectures;
+    }
+
+    public String getStudentName() {
+        return studentName;
+    }
+
+    public void setStudentName(String studentName) {
+        this.studentName = studentName;
     }
 
     @Override

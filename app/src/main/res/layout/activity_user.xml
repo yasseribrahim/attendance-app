@@ -19,7 +19,6 @@
         android:layout_marginBottom="5dp"
         android:background="@null"
         android:gravity="center_horizontal"
-        android:inputType="text"
         android:text="@string/str_user_type_admin_title"
         android:textColor="@color/colorAccent"
         android:textStyle="bold" />
@@ -27,8 +26,9 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/header"
-        android:layout_above="@+id/btn_save">
+        android:layout_above="@+id/btn_save"
+        android:layout_below="@+id/header">
+
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -41,7 +41,6 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="5dp"
                 android:background="@null"
-                android:inputType="text"
                 android:text="@string/str_username"
                 android:textColor="@color/black_light"
                 android:textStyle="bold" />
@@ -118,7 +117,6 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="5dp"
                 android:background="@null"
-                android:inputType="text"
                 android:text="@string/str_password"
                 android:textColor="@color/black_light"
                 android:textStyle="bold" />
@@ -155,7 +153,6 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="5dp"
                 android:background="@null"
-                android:inputType="text"
                 android:text="@string/str_password_confirm_hint"
                 android:textColor="@color/black_light"
                 android:textStyle="bold" />
@@ -191,7 +188,6 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="5dp"
                 android:background="@null"
-                android:inputType="text"
                 android:text="@string/str_full_name_hint"
                 android:textColor="@color/black_light"
                 android:textStyle="bold" />
@@ -226,7 +222,6 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="5dp"
                 android:background="@null"
-                android:inputType="text"
                 android:text="@string/str_phone_hint"
                 android:textColor="@color/black_light"
                 android:textStyle="bold" />
@@ -262,7 +257,6 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="5dp"
                 android:background="@null"
-                android:inputType="text"
                 android:text="@string/str_address_hint"
                 android:textColor="@color/black_light"
                 android:textStyle="bold" />

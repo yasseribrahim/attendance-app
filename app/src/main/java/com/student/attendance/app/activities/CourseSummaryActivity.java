@@ -19,14 +19,18 @@ import com.student.attendance.app.models.Summary;
 import com.student.attendance.app.models.User;
 import com.student.attendance.app.presenters.LecturesCallback;
 import com.student.attendance.app.presenters.LecturesPresenter;
+import com.student.attendance.app.presenters.UsersCallback;
+import com.student.attendance.app.presenters.UsersPresenter;
 import com.student.attendance.app.utils.Constants;
 import com.student.attendance.app.utils.LocaleHelper;
 import com.student.attendance.app.utils.StorageHelper;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
-public class CourseSummaryActivity extends BaseActivity implements LecturesCallback {
+public class CourseSummaryActivity extends BaseActivity implements LecturesCallback, UsersCallback {
     private Toolbar toolbar;
     private RecyclerView recyclerView;
     private TextView name;
@@ -36,10 +40,12 @@ public class CourseSummaryActivity extends BaseActivity implements LecturesCallb
     private TextView total;
     private View separator;
 
+    private UsersPresenter usersPresenter;
     private LecturesPresenter presenter;
     private CourseSummaryAdapter adapter;
     private List<Lecture> lectures;
     private List<Summary> summaries;
+    private List<User> users;
     private Course course;
     private boolean isLecturerAccount;
     private String userId = null;
@@ -62,6 +68,7 @@ public class CourseSummaryActivity extends BaseActivity implements LecturesCallb
 
         course = getIntent().getParcelableExtra(Constants.ARG_OBJECT);
         presenter = new LecturesPresenter(this);
+        usersPresenter = new UsersPresenter(this);
         message = findViewById(R.id.message);
         User user = StorageHelper.getCurrentUser();
         if (user != null && user.getUserType() == Constants.USER_TYPE_STUDENT) {
@@ -72,6 +79,7 @@ public class CourseSummaryActivity extends BaseActivity implements LecturesCallb
         }
         summaries = new ArrayList<>();
         lectures = new ArrayList<>();
+        users = new ArrayList<>();
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         adapter = new CourseSummaryAdapter(summaries, !isLecturerAccount);
@@ -139,22 +147,36 @@ public class CourseSummaryActivity extends BaseActivity implements LecturesCallb
         this.lectures.clear();
         this.lectures.addAll(lectures);
         summaries.clear();
+        Map<String, Integer> map = new HashMap<>();
 
         float total = 0;
         for (Lecture lecture : lectures) {
             if (lecture.getStudents() == null) {
                 lecture.setStudents(new ArrayList<>());
             }
-            Summary summary = new Summary(lecture.getId(), lecture.getName());
+            Summary summary = new Summary(lecture.getId(), lecture.getName(), null);
             if (isLecturerAccount) {
-                summary.setStudentNumber(lecture.getStudents().size());
+                for (String studentId : lecture.getStudents()) {
+                    Integer number = map.get(studentId);
+                    if (number == null) {
+                        number = 0;
+                    }
+                    number++;
+                    map.put(studentId, number);
+                }
             } else {
                 if (lecture.getStudents().contains(userId)) {
                     summary.setDegree(course.getDegreePerLecture());
                     total += course.getDegreePerLecture();
                 }
+                summaries.add(summary);
             }
-            summaries.add(summary);
+        }
+
+        if (isLecturerAccount) {
+            for (Map.Entry<String, Integer> entry : map.entrySet()) {
+                summaries.add(new Summary("", "", entry.getValue() * course.getDegreePerLecture(), entry.getValue(), entry.getKey()));
+            }
         }
 
         if (!isLecturerAccount) {
@@ -167,7 +189,22 @@ public class CourseSummaryActivity extends BaseActivity implements LecturesCallb
         }
 
         message.setVisibility(this.lectures.isEmpty() ? View.VISIBLE : View.GONE);
-        summaries.add(0, new Summary("", ""));
+        summaries.add(0, new Summary("", "", ""));
+        if (isLecturerAccount) {
+            usersPresenter.getUsersByGrade(course.getGradeId());
+        } else {
+            adapter.notifyDataSetChanged();
+        }
+    }
+
+    @Override
+    public void onGetUsersComplete(List<User> users) {
+        for (Summary summary : summaries) {
+            int index = users.indexOf(new User(summary.getStudentName()));
+            if (index != -1) {
+                summary.setStudentName(users.get(index).getFullName());
+            }
+        }
         adapter.notifyDataSetChanged();
     }
 }
