@@ -23,10 +23,11 @@ public class DataManager {
 
     public static void initUserAdmin() {
         User user = new User();
-        user.setId("TSC9qu8h02NVFSenAvo6h0pFjNu1");
+        user.setId("rtemNXpJ3lf9PwjpwPZaoeerJik1");
         user.setUserType(Constants.USER_TYPE_ADMIN);
         user.setUsername("admin@attendance.com");
-        NODE_USERS.child("TSC9qu8h02NVFSenAvo6h0pFjNu1").setValue(user);
+        user.setPassword("123456");
+        NODE_USERS.child("rtemNXpJ3lf9PwjpwPZaoeerJik1").setValue(user);
     }
 
     public static void initAbout() {
