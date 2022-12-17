@@ -7,8 +7,10 @@ import android.os.Handler;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.student.attendance.app.R;
+import com.student.attendance.app.models.User;
 import com.student.attendance.app.utils.DataManager;
 import com.student.attendance.app.utils.LocaleHelper;
+import com.student.attendance.app.utils.StorageHelper;
 
 public class SplashActivity extends BaseActivity {
     private static final int SPLASH_DELAY_MILLIS = 2000;
@@ -35,8 +37,7 @@ public class SplashActivity extends BaseActivity {
     }
 
     private boolean isOpenHome() {
-        FirebaseAuth auth = FirebaseAuth.getInstance();
-        FirebaseUser user = auth.getCurrentUser();
+        User user = StorageHelper.getCurrentUser();
         return user != null;
     }
 

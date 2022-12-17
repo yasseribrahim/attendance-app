@@ -24,6 +24,7 @@ import com.student.attendance.app.R;
 import com.student.attendance.app.models.User;
 import com.student.attendance.app.utils.BitmapHelper;
 import com.student.attendance.app.utils.Constants;
+import com.student.attendance.app.utils.StorageHelper;
 import com.student.attendance.app.utils.UIHelper;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -56,7 +57,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
         database = FirebaseDatabase.getInstance();
-        userPath = Constants.NODE_NAME_USERS + "/" + FirebaseAuth.getInstance().getCurrentUser().getUid();
+        userPath = Constants.NODE_NAME_USERS + "/" + StorageHelper.getCurrentUser().getId();
         userReference = database.getReference(userPath);
         profileImage = view.findViewById(R.id.profile_image);
         lblWelcome = view.findViewById(R.id.lbl_welcome);

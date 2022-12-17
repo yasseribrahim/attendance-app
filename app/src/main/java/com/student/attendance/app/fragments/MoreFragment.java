@@ -75,7 +75,7 @@ public class MoreFragment extends Fragment implements View.OnClickListener {
 
         auth = FirebaseAuth.getInstance();
         database = FirebaseDatabase.getInstance();
-        userPath = Constants.NODE_NAME_USERS + "/" + FirebaseAuth.getInstance().getCurrentUser().getUid();
+        userPath = Constants.NODE_NAME_USERS + "/" + StorageHelper.getCurrentUser().getId();
         userReference = database.getReference(userPath);
         profileImage = view.findViewById(R.id.profile_image);
         changeImageProfile = view.findViewById(R.id.change_image_profile);
@@ -176,7 +176,7 @@ public class MoreFragment extends Fragment implements View.OnClickListener {
 
     private void upload(Uri uri) {
         ProgressDialogFragment.show(getChildFragmentManager());
-        StorageReference reference = FirebaseStorage.getInstance().getReference().child(Constants.NODE_NAME_IMAGES + "/" + auth.getCurrentUser().getUid());
+        StorageReference reference = FirebaseStorage.getInstance().getReference().child(Constants.NODE_NAME_IMAGES + "/" + StorageHelper.getCurrentUser().getId());
         reference.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {

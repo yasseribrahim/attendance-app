@@ -25,6 +25,7 @@ import com.student.attendance.app.adapters.CoursesAdapter;
 import com.student.attendance.app.models.Course;
 import com.student.attendance.app.presenters.CoursesCallback;
 import com.student.attendance.app.presenters.CoursesPresenter;
+import com.student.attendance.app.utils.StorageHelper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -52,7 +53,7 @@ public class CoursesFragment extends Fragment implements CoursesCallback, Course
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_courses, container, false);
 
-        studentId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        studentId = StorageHelper.getCurrentUser().getId();
         presenter = new CoursesPresenter(this);
         refreshLayout = rootView.findViewById(R.id.refresh_layout);
         btnNewCourse = rootView.findViewById(R.id.new_course);
